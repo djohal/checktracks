@@ -1,10 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 
-const SigninScreen = () => {
+const SigninScreen = ({ navigation }: NavigationStackScreenProps) => {
   return (
     <View>
       <Text>SigninScreen</Text>
+      <Button
+        title="Go to main flow"
+        onPress={() => navigation.navigate('mainFlow')}
+      />
     </View>
   );
 };
