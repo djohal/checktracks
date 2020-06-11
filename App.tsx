@@ -9,6 +9,19 @@ import SignupScreen from './src/screens/SignupScreen';
 import TrackCreateScreen from './src/screens/TrackCreateScreen';
 import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+
+const uiTheme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#1D3557',
+    accent: '#E63946',
+    text: '#152842',
+    background: 'white',
+  },
+};
 
 const switchNavigator = createSwitchNavigator({
   loginFlow: createStackNavigator({
@@ -25,4 +38,12 @@ const switchNavigator = createSwitchNavigator({
   }),
 });
 
-export default createAppContainer(switchNavigator);
+const App = createAppContainer(switchNavigator);
+
+export default () => {
+  return (
+    <PaperProvider theme={uiTheme}>
+      <App />
+    </PaperProvider>
+  );
+};
