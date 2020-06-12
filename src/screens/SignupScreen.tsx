@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { View, StyleSheet, ImageBackground, Image } from 'react-native';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { TextInput, Button, Text, useTheme, Title } from 'react-native-paper';
-const image = require('../assets/background.jpeg');
-const logo = require('../assets/logo.png');
+
+const BackgroundImage = require('../assets/background.jpeg');
+const Logo = require('../assets/logo.png');
 
 const SignupScreen = ({ navigation }: NavigationStackScreenProps) => {
   const [email, setEmail] = useState('');
@@ -14,11 +15,11 @@ const SignupScreen = ({ navigation }: NavigationStackScreenProps) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={image}
+        source={BackgroundImage}
         style={styles.image}
         imageStyle={{ opacity: 0.5 }}
       >
-        <Image style={styles.logo} source={logo} />
+        <Image style={styles.logo} source={Logo} />
         <Title style={styles.title}>Create account</Title>
         <TextInput
           style={styles.input}
