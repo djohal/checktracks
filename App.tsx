@@ -11,6 +11,8 @@ import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 
+import { Provider as AuthProvider } from './src/context/AuthContext';
+
 const uiTheme = {
   ...DefaultTheme,
   roundness: 2,
@@ -43,7 +45,9 @@ const App = createAppContainer(switchNavigator);
 export default () => {
   return (
     <PaperProvider theme={uiTheme}>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </PaperProvider>
   );
 };
