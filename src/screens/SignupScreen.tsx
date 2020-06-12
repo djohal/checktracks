@@ -1,11 +1,16 @@
-import React from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, ImageBackground, Image } from 'react-native';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { TextInput, Button, Text, useTheme, Title } from 'react-native-paper';
 const image = require('../assets/background.jpeg');
+const logo = require('../assets/logo.png');
 
 const SignupScreen = ({ navigation }: NavigationStackScreenProps) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const { colors } = useTheme();
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -13,8 +18,22 @@ const SignupScreen = ({ navigation }: NavigationStackScreenProps) => {
         style={styles.image}
         imageStyle={{ opacity: 0.5 }}
       >
-        <TextInput style={styles.input} label="Email" />
-        <TextInput style={styles.input} label="Password" />
+        <Image style={styles.logo} source={logo} />
+        <Title style={styles.title}>Create account</Title>
+        <TextInput
+          style={styles.input}
+          label="Email"
+          onChangeText={setEmail}
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
+        <TextInput
+          style={styles.input}
+          label="Password"
+          onChangeText={setPassword}
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
         <Button
           style={styles.button}
           onPress={() => navigation.navigate('Signin')}
@@ -35,15 +54,21 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     resizeMode: 'cover',
-    justifyContent: 'center',
     opacity: 10,
+    justifyContent: 'center',
+    paddingBottom: 100,
+  },
+  logo: {
+    width: '100%',
+    height: 150,
+  },
+  title: {
+    margin: 10,
+    marginVertical: 10,
+    fontSize: 24,
   },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignContent: 'center',
-    flexDirection: 'column',
-    textAlign: 'center',
   },
   input: {
     marginVertical: 1,
